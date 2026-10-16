@@ -1,0 +1,136 @@
+[
+  {
+    "fn": "convertTruth",
+    "args": [
+      60
+    ],
+    "result": "60 oven minutes becomes about 4.0 hours on high or 9.0 hours on low honestly."
+  },
+  {
+    "fn": "convertTruth",
+    "args": [
+      30
+    ],
+    "result": "30 oven minutes becomes about 2.0 hours on high or 4.5 hours on low honestly."
+  },
+  {
+    "fn": "convertTruth",
+    "args": [
+      45
+    ],
+    "result": "45 oven minutes becomes about 3.0 hours on high or 6.8 hours on low honestly."
+  },
+  {
+    "fn": "convertTruth",
+    "args": [
+      90
+    ],
+    "result": "90 oven minutes becomes about 6.0 hours on high or 13.5 hours on low honestly."
+  },
+  {
+    "fn": "convertTruth",
+    "args": [
+      0
+    ],
+    "error": "the oven time must be above zero"
+  },
+  {
+    "fn": "fillTruth",
+    "args": [
+      3,
+      6
+    ],
+    "result": "3.0 quarts of stew in a 6.0-quart cooker fills it 0.5 of the way, right in the half-to-three-quarter band honestly."
+  },
+  {
+    "fn": "fillTruth",
+    "args": [
+      2,
+      6
+    ],
+    "result": "2.0 quarts of stew in a 6.0-quart cooker fills it 0.3 of the way, under half full, so it runs hot and fast - check it early honestly."
+  },
+  {
+    "fn": "fillTruth",
+    "args": [
+      5,
+      6
+    ],
+    "result": "5.0 quarts of stew in a 6.0-quart cooker fills it 0.8 of the way, past three-quarters, so it runs slow and crowds the lid honestly."
+  },
+  {
+    "fn": "fillTruth",
+    "args": [
+      4.2,
+      6
+    ],
+    "result": "4.2 quarts of stew in a 6.0-quart cooker fills it 0.7 of the way, right in the half-to-three-quarter band honestly."
+  },
+  {
+    "fn": "fillTruth",
+    "args": [
+      7,
+      6
+    ],
+    "result": "7.0 quarts of stew in a 6.0-quart cooker fills it 1.2 of the way, more stew than the cooker holds honestly."
+  },
+  {
+    "fn": "fillTruth",
+    "args": [
+      4,
+      8
+    ],
+    "result": "4.0 quarts of stew in an 8.0-quart cooker fills it 0.5 of the way, right in the half-to-three-quarter band honestly."
+  },
+  {
+    "fn": "fillTruth",
+    "args": [
+      0,
+      6
+    ],
+    "error": "the load must be above zero"
+  },
+  {
+    "fn": "fillTruth",
+    "args": [
+      3,
+      0
+    ],
+    "error": "the cooker must be above zero"
+  },
+  {
+    "fn": "servingTruth",
+    "args": [
+      6
+    ],
+    "result": "6 servings ask 9.0 cups, 2.3 quarts, of stew honestly."
+  },
+  {
+    "fn": "servingTruth",
+    "args": [
+      1
+    ],
+    "result": "1 serving asks 1.5 cups, 0.4 quarts, of stew honestly."
+  },
+  {
+    "fn": "servingTruth",
+    "args": [
+      4
+    ],
+    "result": "4 servings ask 6.0 cups, 1.5 quarts, of stew honestly."
+  },
+  {
+    "fn": "servingTruth",
+    "args": [
+      12
+    ],
+    "result": "12 servings ask 18.0 cups, 4.5 quarts, of stew honestly."
+  },
+  {
+    "fn": "servingTruth",
+    "args": [
+      0
+    ],
+    "error": "the serving count must be above zero"
+  }
+]
