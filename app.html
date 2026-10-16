@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crock Math - app</title>
+<style>
+  :root { --accent:#5d6e2e; --ink:#232a14; --paper:#faf9f1; --soft:#f0efdd; }
+  * { box-sizing:border-box; margin:0; }
+  body { font-family:Georgia, 'Times New Roman', serif; background:var(--paper); color:var(--ink); line-height:1.55; padding:2rem 1.2rem; }
+  main { max-width:660px; margin:0 auto; }
+  h1 { font-size:1.8rem; color:var(--accent); }
+  .boundary { background:#fdeaea; border-left:6px solid #b03030; color:#5c1c1c; border-radius:6px; padding:1rem 1.1rem; margin:1rem 0 1.4rem; }
+  .boundary strong { display:block; margin-bottom:.3rem; }
+  .panel { background:var(--soft); border-left:5px solid var(--accent); border-radius:6px; padding:1rem 1.1rem; margin-bottom:1.1rem; }
+  h2 { font-size:1.1rem; margin-bottom:.6rem; }
+  p.note { font-size:.9rem; margin-bottom:.4rem; }
+  label { display:block; font-size:.9rem; margin:.45rem 0 .1rem; }
+  input { width:100%; padding:.45rem .55rem; font-size:1rem; border:1px solid #c6caa4; border-radius:6px; background:#fff; color:var(--ink); }
+  .out { margin-top:.7rem; font-size:.98rem; background:#fff; border:1px dashed #c6caa4; border-radius:6px; padding:.6rem .7rem; min-height:2.4rem; }
+  .out.err { border-color:#b03030; color:#8a1f1f; font-style:normal; }
+  footer { margin-top:1.8rem; font-size:.85rem; color:#5f6247; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Crock Math</h1>
+  <div class="boundary">
+    <strong>Boundary: illustrative arithmetic only</strong>
+    Labeled kitchen norms - 30 oven minutes to about 2 hours on high or 4.5 on low, the half-to-three-quarter fill band, 1.5 cups of stew per serving. Your cooker's own manual wins every tie. This page never judges doneness or food safety; follow your recipe's guidance.
+  </div>
+
+  <div class="panel">
+    <h2>The conversion truth</h2>
+    <p class="note">Every 30 minutes of oven simmering becomes about 2 hours on high or 4.5 on low.</p>
+    <label for="c-min">Oven minutes in the recipe</label>
+    <input id="c-min" type="number" min="0" step="15" value="60">
+    <div class="out" id="c-out"></div>
+  </div>
+
+  <div class="panel">
+    <h2>The fill truth</h2>
+    <p class="note">A slow cooker works best half to three-quarters full.</p>
+    <label for="f-load">Stew you have (quarts)</label>
+    <input id="f-load" type="number" min="0" step="0.5" value="3">
+    <label for="f-cooker">Cooker size (quarts)</label>
+    <input id="f-cooker" type="number" min="0" step="0.5" value="6">
+    <div class="out" id="f-out"></div>
+  </div>
+
+  <div class="panel">
+    <h2>The serving truth</h2>
+    <p class="note">A serving of stew is about 1.5 cups.</p>
+    <label for="s-n">Servings needed</label>
+    <input id="s-n" type="number" min="0" step="1" value="6">
+    <div class="out" id="s-out"></div>
+  </div>
+
+  <footer>Crock Math is exact arithmetic over labeled kitchen norms. <a href="index.html">Why it exists</a>.</footer>
+</main>
+<script src="engine.js"></script>
+<script>
+  const num = (id) => Number(document.getElementById(id).value);
+  function show(out, fn) {
+    try {
+      const text = fn();
+      out.textContent = text;
+      out.classList.remove("err");
+    } catch (e) {
+      out.textContent = e.message;
+      out.classList.add("err");
+    }
+  }
+  const cOut = document.getElementById("c-out");
+  const fOut = document.getElementById("f-out");
+  const sOut = document.getElementById("s-out");
+  function recalc() {
+    show(cOut, () => convertTruth(num("c-min")));
+    show(fOut, () => fillTruth(num("f-load"), num("f-cooker")));
+    show(sOut, () => servingTruth(num("s-n")));
+  }
+  document.querySelectorAll("input").forEach((el) => {
+    el.addEventListener("input", recalc);
+    el.addEventListener("change", recalc);
+  });
+  recalc();
+</script>
+</body>
+</html>
